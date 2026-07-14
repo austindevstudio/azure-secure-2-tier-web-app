@@ -30,14 +30,6 @@ Build a classic **IaaS architecture** on Azure. Create a Virtual Network with tw
 
 ---
 
-## ✅ Prerequisites
-
-- [ ] Active Azure Subscription
-- [ ] Completed Week 2 Video Modules
-- [ ] Terminal installed
-
----
-
 ## 📐 Lab Variables (Naming Convention)
 
 | Resource | Value |
