@@ -13,8 +13,19 @@ Build a classic **IaaS architecture** on Azure. Create a Virtual Network with tw
 ## 🏗️ Architecture
 
 ```
-<img width="1536" height="1024" alt="Azure 2-Tier Web Application Lab" src="https://github.com/user-attachments/assets/b280508b-b3c1-4111-a241-85bdf0ea18b4" />
-
+ 🌐 Internet
+      |
+      ▼
+┌─────────────────────┐
+│   Public Subnet     │
+│   [ vm-web-01 ]     │
+└────────┬────────────┘
+         |
+         ▼
+┌─────────────────────┐
+│   Private Subnet    │
+│   [ vm-db-01  ]     │
+└─────────────────────┘
 ```
 
 ---
