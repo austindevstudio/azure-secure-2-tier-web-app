@@ -12,20 +12,33 @@ Build a classic **IaaS architecture** on Azure. Create a Virtual Network with tw
 
 ## 🏗️ Architecture
 
-```
- 🌐 Internet
-      |
-      ▼
-┌─────────────────────┐
-│   Public Subnet     │
-│   [ vm-web-01 ]     │
-└────────┬────────────┘
-         |
-         ▼
-┌─────────────────────┐
-│   Private Subnet    │
-│   [ vm-db-01  ]     │
-└─────────────────────┘
+```mermaid
+flowchart TB
+    INET(["🌐 Internet"])
+    NSG["🔒 NSG: nsg-db<br/>Rule: Allow-Web-Subnet<br/>Source: 10.0.1.0/24 only<br/>Deny: all other inbound"]
+ 
+    subgraph VNET["VNet: vnet-lab02 (10.0.0.0/16)"]
+        direction TB
+        subgraph WEBSUB["Public Subnet: snet-web (10.0.1.0/24)"]
+            WEB["🖥️ vm-web-01<br/>Public IP: Yes · NSG: nsg-web"]
+        end
+        subgraph DBSUB["Private Subnet: snet-db (10.0.2.0/24)"]
+            DB["🗄️ vm-db-01<br/>Public IP: None · NSG: nsg-db"]
+        end
+    end
+ 
+    INET -- "HTTP 80 / SSH 22" --> WEB
+    WEB -- "SSH jump / ping<br/>Internal VNet traffic only" --> DB
+    NSG -. "enforces access to" .-> DB
+ 
+    classDef inet fill:#e8f1fb,stroke:#4a90e2,stroke-width:2px,color:#1f3b5c
+    classDef nsg  fill:#fbf3d6,stroke:#e3c767,stroke-width:2px,color:#5a4a10
+    classDef web  fill:#e9f5e9,stroke:#5cb85c,stroke-width:2px,color:#1e4d1e
+    classDef db   fill:#fbeaea,stroke:#d9534f,stroke-width:2px,color:#6b1f1b
+    class INET inet
+    class NSG nsg
+    class WEB web
+    class DB db
 ```
 
 ---
