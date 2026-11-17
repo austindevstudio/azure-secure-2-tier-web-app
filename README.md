@@ -71,6 +71,7 @@ flowchart TB
    - Subnet 2 — Name: `snet-db`, Range: `10.0.2.0/24`
 4. Click **Review + create** → **Create**
 
+<img width="1431" height="671" alt="Screenshot 2026-11-17 at 12 20 28" src="https://github.com/user-attachments/assets/8c5f57c4-4558-4666-8b89-6f1caa57d238" />
 ---
 
 ### Phase 2: 🖥️ Deploying the Web Server (Front End)
@@ -89,8 +90,7 @@ flowchart TB
    - Public IP: Create New (Standard)
 4. Click **Review + create** → **Create**
 5. 💾 Download the Private Key (`.pem`) if prompted
-
----
+<img width="1431" height="698" alt="Screenshot 2026-11-17 at 12 50 34" src="https://github.com/user-attachments/assets/3e978baa-fdde-4c47-a4f9-1a61df2317e3" />---
 
 ### Phase 3: 🗄️ Deploying the Database Server (Back End)
 
@@ -109,6 +109,7 @@ flowchart TB
    - Public IP: **None** ← This server must not be internet-facing
 4. Click **Review + create** → **Create**
 
+<img width="1440" height="696" alt="Screenshot 2026-11-17 at 12 23 53" src="https://github.com/user-attachments/assets/3af42bec-0a75-4785-980f-348e3891a787" />
 ---
 
 ### Phase 4: 🔁 Validating Connectivity (The Jump)
@@ -131,6 +132,7 @@ ping 10.0.2.4
 ✅ You should see replies — this confirms both VMs are connected inside the VNet.  
 Press `Ctrl + C` to stop.
 
+<img width="697" height="482" alt="Screenshot 2026-11-17 at 12 29 55" src="https://github.com/user-attachments/assets/8971a818-9820-4df9-8a36-0269137b8b2b" />
 ---
 
 ### Phase 5: 🔒 Configuring the Firewall (NSG)
@@ -158,6 +160,7 @@ Restrict `vm-db-01` so **only** the Web Subnet can communicate with it.
 
 > 💡 Because `vm-db-01` has no public IP, internet traffic is already blocked. This rule makes the intent **explicit** and enforced at the NSG layer.
 
+<img width="1440" height="693" alt="Screenshot 2026-11-17 at 12 32 04" src="https://github.com/user-attachments/assets/f158936c-fcdd-453a-ad9b-11bf210df5a4" />
 ---
 
 ## 🛠️ Troubleshooting
